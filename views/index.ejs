@@ -400,7 +400,7 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const countriesVisited = `<%=JSON.stringify(countries)%>`;
+    const countriesVisited = <% - JSON.stringify(countries) %>;
     const userColor = "<%= color %>";
 
     countriesVisited.forEach(code => {
