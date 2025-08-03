@@ -1,8 +1,9 @@
-````
 ```markdown
 # 🌍 Family Trip Tracker
 
 A full-stack web application that allows users to track the countries they've visited, switch between user profiles, and view progress visually.
+
+---
 
 ## ✨ Features
 
@@ -11,6 +12,8 @@ A full-stack web application that allows users to track the countries they've vi
 - ✅ View total countries visited
 - ✅ Color-coded user customization
 - ✅ PostgreSQL database integration (Render compatible)
+
+---
 
 ## 🚀 Tech Stack
 
@@ -27,8 +30,7 @@ A full-stack web application that allows users to track the countries they've vi
 ---
 
 ## 📁 Project Structure
-
-````
+```
 
 Family-Trip-Tracker/
 │
@@ -61,7 +63,7 @@ npm install
 
 ### 3. Set up your PostgreSQL database
 
-Use the following SQL to create your tables:
+Run the following SQL:
 
 ```sql
 DROP TABLE IF EXISTS visited_countries, users;
@@ -85,13 +87,13 @@ INSERT INTO visited_countries (country_code, user_id)
 VALUES ('FR', 1), ('GB', 1), ('CA', 2), ('FR', 2);
 ```
 
-💡 You can run these queries using pgAdmin, psql, or the Render database shell.
+💡 You can run these queries using **pgAdmin**, `psql`, or the **Render database shell**.
 
 ---
 
 ### 4. Configure environment variables
 
-Create a `.env` file in the root directory with the following:
+Create a `.env` file in the root directory with:
 
 ```
 DB_USER=your_db_user
@@ -101,17 +103,16 @@ DB_PASSWORD=your_db_password
 DB_PORT=5432
 ```
 
-> On **Render**, add these in: **Render Dashboard → Your Web Service → Environment → Add Environment Variable**
+➡️ On **Render**: Go to
+**Dashboard → Your Web Service → Environment → Add Environment Variable**
+and add the same variables above.
 
 ---
 
-### 5. Deploy to Render
+### 5. Access the deployed app
 
-This app is deployed on Render and accessible at:
-
-🔗 **[https://family-trip-tracker.onrender.com/user](https://family-trip-tracker.onrender.com/user)**
-
-No need to run the server locally unless you're developing.
+✅ Live deployment:
+🔗 [https://family-trip-tracker.onrender.com/user](https://family-trip-tracker.onrender.com/user)
 
 ---
 
@@ -127,13 +128,16 @@ No need to run the server locally unless you're developing.
 
 ## 🛡 Security
 
-> Environment variables are used to protect sensitive database credentials. Make sure **not to commit `.env` files**. Instead, share `.env.example` for configuration.
+Environment variables protect sensitive credentials.
+🚫 **Never commit your `.env` file.**
+✅ Instead, share a `.env.example` for configuration reference.
 
 ---
 
 ## 🤝 Contributions
 
-Pull requests are welcome! If you find bugs or have feature ideas, feel free to open an issue or PR.
+Pull requests are welcome!
+If you find bugs or have ideas for improvements, feel free to open an issue or PR.
 
 ---
 
@@ -151,5 +155,5 @@ Made with ❤️ by [Sai Pavan](https://github.com/SaiPavan214)
 
 ---
 
-Would you like me to also give you a valid `.env.example` file content to go along with this?
+Let me know if you’d also like a ready-made `.env.example` or a `Deploy to Render` button added to the README.
 ```
