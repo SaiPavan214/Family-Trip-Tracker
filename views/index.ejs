@@ -397,17 +397,3 @@
 </body>
 
 </html>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const countriesVisited = <% - JSON.stringify(countries) %>;
-    const userColor = "<%= color %>";
-
-    countriesVisited.forEach(code => {
-      const el = document.getElementById(code);
-      if (el) {
-        el.style.fill = userColor;
-      }
-    });
-  });
-</script>
