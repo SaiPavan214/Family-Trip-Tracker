@@ -1,13 +1,6 @@
-Here's your updated `README.md`, modified to reflect the **latest database schema** you're using (with only `users` and `visited_countries`, no `countries` table):
-
----
-
-```markdown
 # 🌍 Family Trip Tracker
 
 A full-stack web application that allows users to track the countries they've visited, switch between user profiles, and view progress visually.
-
----
 
 ## ✨ Features
 
@@ -16,8 +9,6 @@ A full-stack web application that allows users to track the countries they've vi
 - ✅ View total countries visited
 - ✅ Color-coded user customization
 - ✅ PostgreSQL database integration (Render compatible)
-
----
 
 ## 🚀 Tech Stack
 
@@ -31,10 +22,7 @@ A full-stack web application that allows users to track the countries they've vi
 | dotenv      | Environment variable config |
 | body-parser | Middleware for form parsing |
 
----
-
 ## 📁 Project Structure
-```
 
 Family-Trip-Tracker/
 │
@@ -46,10 +34,6 @@ Family-Trip-Tracker/
 ├── package.json
 └── README.md
 
-````
-
----
-
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the repository
@@ -57,7 +41,7 @@ Family-Trip-Tracker/
 ```bash
 git clone https://github.com/SaiPavan214/Family-Trip-Tracker.git
 cd Family-Trip-Tracker
-````
+```
 
 ### 2. Install dependencies
 
@@ -92,8 +76,6 @@ VALUES ('FR', 1), ('GB', 1), ('CA', 2), ('FR', 2);
 ```
 
 💡 You can run these queries using pgAdmin, psql, or your Render database shell.
-
----
 
 ### 4. Configure environment variables
 
