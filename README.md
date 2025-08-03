@@ -22,7 +22,11 @@ A full-stack web application that allows users to track the countries they've vi
 | dotenv      | Environment variable config |
 | body-parser | Middleware for form parsing |
 
+---
+
 ## 📁 Project Structure
+
+```
 
 Family-Trip-Tracker/
 │
@@ -33,6 +37,10 @@ Family-Trip-Tracker/
 ├── index.js # Main server logic
 ├── package.json
 └── README.md
+
+```
+
+---
 
 ## ⚙️ Setup Instructions
 
@@ -76,6 +84,8 @@ VALUES ('FR', 1), ('GB', 1), ('CA', 2), ('FR', 2);
 ```
 
 💡 You can run these queries using pgAdmin, psql, or your Render database shell.
+
+---
 
 ### 4. Configure environment variables
 
@@ -134,3 +144,10 @@ This project is licensed under the [MIT License](LICENSE).
 ## 👨‍💻 Author
 
 Made with ❤️ by [Sai Pavan](https://github.com/SaiPavan214)
+
+```
+
+---
+
+Let me know if you also want the `.env.example` or a deploy-to-Render guide section added.
+```
