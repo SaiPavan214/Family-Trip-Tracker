@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
 
-// PostgreSQL connection setup
+// ✅ PostgreSQL connection (Render / hosted only)
 const db = new pg.Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -35,12 +35,17 @@ async function getCurrentUser() {
 }
 
 async function checkVisited(userId) {
-  const result = await db.query("SELECT country_code FROM visited_countries WHERE user_id = $1", [userId]);
+  const result = await db.query(
+    "SELECT country_code FROM visited_countries WHERE user_id = $1",
+    [userId]
+  );
   return result.rows.map((row) => row.country_code);
 }
 
-// GET / - Default homepage
-app.get("/", async (req, res) => {
+// Routes
+
+// GET / and /user (for Render)
+app.get(["/", "/user"], async (req, res) => {
   const countries = await checkVisited(currentUserId);
   const users = await getUsers();
   const colorResult = await db.query("SELECT color FROM users WHERE id = $1", [currentUserId]);
@@ -50,26 +55,11 @@ app.get("/", async (req, res) => {
     countries,
     total: countries.length,
     users,
-    color
+    color,
   });
 });
 
-// ✅ GET /user - Used by Render public link
-app.get("/user", async (req, res) => {
-  const countries = await checkVisited(currentUserId);
-  const users = await getUsers();
-  const colorResult = await db.query("SELECT color FROM users WHERE id = $1", [currentUserId]);
-  const color = colorResult.rows[0]?.color || "teal";
-
-  res.render("index.ejs", {
-    countries,
-    total: countries.length,
-    users,
-    color
-  });
-});
-
-// POST /add - Add a country
+// POST /add - Add visited country
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
   try {
@@ -91,41 +81,31 @@ app.post("/add", async (req, res) => {
   res.redirect("/");
 });
 
-// POST /user - Switch or add a user
+// POST /user - Switch or add new user
 app.post("/user", async (req, res) => {
-  const id = req.body["user"];
-  currentUserId = id;
-
-  if (req.body.add) {
+  if (req.body.add === "new") {
     return res.render("new.ejs");
   }
 
-  const result = await db.query(
-    "SELECT country_code FROM visited_countries WHERE user_id = $1",
-    [id]
-  );
-  const countries = result.rows.map((row) => row.country_code);
-
-  const colorResult = await db.query("SELECT color FROM users WHERE id = $1", [id]);
-  const color = colorResult.rows[0]?.color || "teal";
-
-  res.render("index.ejs", {
-    countries,
-    total: countries.length,
-    color,
-    users: await getUsers(),
-  });
+  currentUserId = req.body.user;
+  res.redirect("/");
 });
 
-// POST /new - Create a new user
+// POST /new - Create new user
 app.post("/new", async (req, res) => {
-  const name = req.body["name"];
-  const color = req.body["color"];
+  const name = req.body.name;
+  const color = req.body.color;
+
   try {
-    await db.query("INSERT INTO users (name, color) VALUES ($1, $2)", [name, color]);
+    const result = await db.query(
+      "INSERT INTO users (name, color) VALUES ($1, $2) RETURNING id",
+      [name, color]
+    );
+    currentUserId = result.rows[0].id;
   } catch (error) {
     console.error("Username may already exist:", error);
   }
+
   res.redirect("/");
 });
 
