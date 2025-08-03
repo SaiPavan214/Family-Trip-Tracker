@@ -112,7 +112,7 @@ and add the same variables above.
 ### 5. Access the deployed app
 
 ✅ Live deployment:
-🔗 [https://family-trip-tracker.onrender.com/user](https://family-trip-tracker.onrender.com/user)
+🔗 [https://family-trip-tracker.onrender.com](https://family-trip-tracker.onrender.com)
 
 ---
 
