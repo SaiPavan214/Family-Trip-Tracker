@@ -134,10 +134,3 @@ This project is licensed under the [MIT License](LICENSE).
 ## 👨‍💻 Author
 
 Made with ❤️ by [Sai Pavan](https://github.com/SaiPavan214)
-
-```
-
----
-
-Let me know if you also want the `.env.example` or a deploy-to-Render guide section added.
-```
