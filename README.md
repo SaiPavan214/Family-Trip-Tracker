@@ -1,3 +1,5 @@
+````
+```markdown
 # 🌍 Family Trip Tracker
 
 A full-stack web application that allows users to track the countries they've visited, switch between user profiles, and view progress visually.
@@ -26,7 +28,7 @@ A full-stack web application that allows users to track the countries they've vi
 
 ## 📁 Project Structure
 
-```
+````
 
 Family-Trip-Tracker/
 │
@@ -38,7 +40,7 @@ Family-Trip-Tracker/
 ├── package.json
 └── README.md
 
-```
+````
 
 ---
 
@@ -49,7 +51,7 @@ Family-Trip-Tracker/
 ```bash
 git clone https://github.com/SaiPavan214/Family-Trip-Tracker.git
 cd Family-Trip-Tracker
-```
+````
 
 ### 2. Install dependencies
 
@@ -83,13 +85,13 @@ INSERT INTO visited_countries (country_code, user_id)
 VALUES ('FR', 1), ('GB', 1), ('CA', 2), ('FR', 2);
 ```
 
-💡 You can run these queries using pgAdmin, psql, or your Render database shell.
+💡 You can run these queries using pgAdmin, psql, or the Render database shell.
 
 ---
 
 ### 4. Configure environment variables
 
-Create a `.env` file in the root directory based on the following:
+Create a `.env` file in the root directory with the following:
 
 ```
 DB_USER=your_db_user
@@ -99,17 +101,17 @@ DB_PASSWORD=your_db_password
 DB_PORT=5432
 ```
 
-> If deploying to **Render**, set these variables in the **Environment > Add Environment Variable** section of your Render service settings.
+> On **Render**, add these in: **Render Dashboard → Your Web Service → Environment → Add Environment Variable**
 
 ---
 
-### 5. Start the application
+### 5. Deploy to Render
 
-```bash
-node index.js
-```
+This app is deployed on Render and accessible at:
 
-Then open your browser to [http://localhost:8000](http://localhost:8000)
+🔗 **[https://family-trip-tracker.onrender.com/user](https://family-trip-tracker.onrender.com/user)**
+
+No need to run the server locally unless you're developing.
 
 ---
 
@@ -149,5 +151,5 @@ Made with ❤️ by [Sai Pavan](https://github.com/SaiPavan214)
 
 ---
 
-Let me know if you also want the `.env.example` or a deploy-to-Render guide section added.
+Would you like me to also give you a valid `.env.example` file content to go along with this?
 ```
