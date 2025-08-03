@@ -388,14 +388,10 @@
   <h2 class="total-count">Total Countries: <%=total%>
   </h2>
   <script>
-    const country_codes = "<%= countries %>".split(",");
-    console.log(typeof ("<%= countries %>"));
+    const country_codes = "<%= countries %>".split(",")
+    console.log(typeof ("<%= countries %>"))
     country_codes.forEach(code => {
-      // CORRECTION 4: Select the SVG path element by its ID to apply the fill.
-      const pathElement = document.getElementById(code);
-      if (pathElement) { // Always a good idea to check if the element exists
-        pathElement.style.fill = "<%= color %>";
-      }
+      document.getElementById(code).style.fill = "<%= color %>"
     });
   </script>
 </body>
