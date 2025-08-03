@@ -1,13 +1,11 @@
-Sure! Here's the entire `README.md` content in one copy-paste-friendly block:
+Here's your updated `README.md`, modified to reflect the **latest database schema** you're using (with only `users` and `visited_countries`, no `countries` table):
 
 ---
 
 ```markdown
 # 🌍 Family Trip Tracker
 
-A full-stack web application that lets users track the countries they've visited, switch between user profiles, and visualize travel progress.
-
-![screenshot](image.png)
+A full-stack web application that allows users to track the countries they've visited, switch between user profiles, and view progress visually.
 
 ---
 
@@ -15,23 +13,23 @@ A full-stack web application that lets users track the countries they've visited
 
 - ✅ Add and manage multiple users
 - ✅ Track visited countries with a simple search
-- ✅ Visualize total countries visited
+- ✅ View total countries visited
 - ✅ Color-coded user customization
-- ✅ PostgreSQL database integration
+- ✅ PostgreSQL database integration (Render compatible)
 
 ---
 
 ## 🚀 Tech Stack
 
-| Technology  | Role                         |
-| ----------- | ---------------------------- |
-| Node.js     | Server-side runtime          |
-| Express.js  | Web framework                |
-| EJS         | Templating engine            |
-| PostgreSQL  | Relational database          |
-| pg          | Node PostgreSQL client       |
-| dotenv      | Environment variable config  |
-| body-parser | Form data parsing middleware |
+| Technology  | Role                        |
+| ----------- | --------------------------- |
+| Node.js     | Server-side runtime         |
+| Express.js  | Web framework               |
+| EJS         | Templating engine           |
+| PostgreSQL  | Relational database         |
+| pg          | PostgreSQL client for Node  |
+| dotenv      | Environment variable config |
+| body-parser | Middleware for form parsing |
 
 ---
 
@@ -42,8 +40,8 @@ Family-Trip-Tracker/
 │
 ├── public/ # Static assets (CSS, images)
 ├── views/ # EJS templates
-├── .env # Environment variables (not committed)
-├── .env.example # Sample config file
+├── .env # Environment variables (excluded from Git)
+├── .env.example # Sample config template
 ├── index.js # Main server logic
 ├── package.json
 └── README.md
@@ -54,90 +52,110 @@ Family-Trip-Tracker/
 
 ## ⚙️ Setup Instructions
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/SaiPavan214/Family-Trip-Tracker.git
-   cd Family-Trip-Tracker
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/SaiPavan214/Family-Trip-Tracker.git
+cd Family-Trip-Tracker
 ````
 
-2. **Install dependencies**
+### 2. Install dependencies
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. **Create a PostgreSQL database**
+### 3. Set up your PostgreSQL database
 
-   Create a database named `world` and ensure it has the following tables:
+Use the following SQL to create your tables:
 
-   ```sql
-   CREATE TABLE users (
-     id SERIAL PRIMARY KEY,
-     name VARCHAR(255) UNIQUE NOT NULL,
-     color VARCHAR(50)
-   );
+```sql
+DROP TABLE IF EXISTS visited_countries, users;
 
-   CREATE TABLE countries (
-     country_code VARCHAR(5) PRIMARY KEY,
-     country_name VARCHAR(255)
-   );
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(15) UNIQUE NOT NULL,
+  color VARCHAR(15)
+);
 
-   CREATE TABLE visited_countries (
-     id SERIAL PRIMARY KEY,
-     user_id INTEGER REFERENCES users(id),
-     country_code VARCHAR(5) REFERENCES countries(country_code)
-   );
-   ```
+CREATE TABLE visited_countries (
+  id SERIAL PRIMARY KEY,
+  country_code CHAR(2) NOT NULL,
+  user_id INTEGER REFERENCES users(id)
+);
 
-4. **Configure environment variables**
+INSERT INTO users (name, color)
+VALUES ('Sai Pavan', 'teal'), ('Sandy', 'powderblue');
 
-   Create a `.env` file based on `.env.example`:
+INSERT INTO visited_countries (country_code, user_id)
+VALUES ('FR', 1), ('GB', 1), ('CA', 2), ('FR', 2);
+```
 
-   ```
-   DB_USER=your_db_user
-   DB_HOST=localhost
-   DB_NAME=world
-   DB_PASSWORD=your_db_password
-   DB_PORT=5432
-   ```
+💡 You can run these queries using pgAdmin, psql, or your Render database shell.
 
-5. **Start the app**
+---
 
-   ```bash
-   node index.js
-   ```
+### 4. Configure environment variables
 
-   Then open [http://localhost:8000](http://localhost:8000) in your browser.
+Create a `.env` file in the root directory based on the following:
+
+```
+DB_USER=your_db_user
+DB_HOST=your_db_host
+DB_NAME=your_db_name
+DB_PASSWORD=your_db_password
+DB_PORT=5432
+```
+
+> If deploying to **Render**, set these variables in the **Environment > Add Environment Variable** section of your Render service settings.
+
+---
+
+### 5. Start the application
+
+```bash
+node index.js
+```
+
+Then open your browser to [http://localhost:8000](http://localhost:8000)
 
 ---
 
 ## 📌 Future Improvements
 
-- 🗺 Add a world map visualization (e.g., using D3 or Leaflet)
-- 📱 Make the app mobile responsive
-- 📊 Add statistics for most visited regions
-- ✈️ Integrate a travel wishlist
+- 🗺 Add a world map with visual pins (e.g., D3.js, Leaflet)
+- 📱 Make the app fully mobile responsive
+- 📊 Add statistics per user
+- 🧾 Add delete functionality for countries and users
+- ✈️ Wishlist for future travel destinations
 
 ---
 
-## 🛡 Security Note
+## 🛡 Security
 
-> All credentials and secrets are handled via environment variables. Be sure **not to commit your `.env` file**. Use `.env.example` as a reference for others.
+> Environment variables are used to protect sensitive database credentials. Make sure **not to commit `.env` files**. Instead, share `.env.example` for configuration.
 
 ---
 
 ## 🤝 Contributions
 
-Pull requests and suggestions are welcome! Feel free to fork the project and improve it.
+Pull requests are welcome! If you find bugs or have feature ideas, feel free to open an issue or PR.
 
 ---
 
 ## 📄 License
 
-This project is open-source under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
 ## 👨‍💻 Author
 
 Made with ❤️ by [Sai Pavan](https://github.com/SaiPavan214)
+
+```
+
+---
+
+Let me know if you also want the `.env.example` or a deploy-to-Render guide section added.
+```
